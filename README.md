@@ -18,10 +18,10 @@ How to use import:
 
 HandCoded: 
 ----------
-- # roots with a specific theme: 1
-- # containers per root: 1
-- # components per container: 20
-- # title for each container in addBoxes (as user input)
+- roots with a specific theme: 1
+- containers per root: 1
+- components per container: 20
+- title for each container in addBoxes (as user input)
 
 HardCoded:
 ----------
@@ -34,21 +34,27 @@ HardCoded:
 
 Design Techniques:
 ------------------
-Abstraction: Theme Class is abstract containing methods that will get Color 
+Abstraction: 
+
+	     Theme Class is abstract containing methods that will get Color 
 	     objects (implemented in the child classes)
 
-Hierarchy: 1) Theme has 2 children (themes): Pastel and Summer.
+Hierarchy: 
+
+           1) Theme has 2 children (themes): Pastel and Summer.
               They both extend Theme and instantiate the getters that get the uniqueColor 
               object attributes (also instatiated in the class)
            
-           2) - Cool303Components has 2 children: Cool303ComponentsSummer and Cool303ComponentsPastel
-                A themed color is applied to the buttons.
-                A shape is also applied automatically depending on the theme with the overriden 
-                paintComponent() and paintBorder() methods 
+           2) Cool303Components has 2 children: Cool303ComponentsSummer and Cool303ComponentsPastel
+              A themed color is applied to the buttons.
+              A shape is also applied automatically depending on the theme with the overriden 
+              paintComponent() and paintBorder() methods 
 
 Polymorphism: Theme has 2 children allowing to use the subtypes of Theme.
               
-Encapsulation: - Methods paintComponent() and paintBorder() in Cool303Components children are 'protected'
+Encapsulation: 
+
+               - Methods paintComponent() and paintBorder() in Cool303Components children are 'protected'
                  which restricts their access to the package.
                  
                - All Color object attributes in Themes Summer and Pastel are private and can only be 
@@ -57,30 +63,38 @@ Encapsulation: - Methods paintComponent() and paintBorder() in Cool303Components
                - All methods other than in Theme and Cool303Components (children) are public as there are
                  no attributes stored. Everything is assembled at runtime.
 
-Overloading: - Cool303Root has addBoxes() and an overloded addBoxes() that accepts a theme.
-               These methods are nearly identical but also add a themed color to the root 
-                
+Overloading: 
+
+             - Cool303Root has addBoxes() and an overloded addBoxes() that accepts a theme.
+               These methods are nearly identical but also add a themed color to the root
+	       
              - Cool303Containers has addButtons() and an overloaded addButtons() that accepts a theme.
-                Similar idea as root, where a themed color is applied to the container
+               Similar idea as root, where a themed color is applied to the container
 
 
 
 Design Patterns:
 ----------------
-Composite Pattern: - Between Cool303Root and Cool303Containers
+Composite Pattern: 
+
+		   - Between Cool303Root and Cool303Containers
                      In each case the both extend JPanel and one Root can have many Containers instantiated inside.
                      Root calls the addButtons() method for each instantiated Container to add Components to it. 
 
-Decorator Pattern: - The overriden paintComponent(), paintBorder(), contains methods allow to change the shape of the buttons
+Decorator Pattern: 
+
+		   - The overriden paintComponent(), paintBorder(), contains methods allow to change the shape of the buttons
                      depending on the theme: Rectanges (No Theme), Bubbles (Pastel), Stars(Summer).
                      Further, the default color for all roots, containers and components can be updated with the themes.
-                    
+		     
                    - The overriden addBoxes() and addButtons() for Cool303Root and Cool303Containers (both extending JPanel)
                      allow to input a theme that will modify the color of containers and buttons respectively.
 
 
-Strategy Pattern: In Cool303Frame, pass Theme object as input when creating a root to apply a specific theme to all 
-                  containers and components it holds.
+Strategy Pattern: 
+
+                   - In Cool303Frame, pass Theme object as input when creating a root to apply a specific theme to all 
+                     containers and components it holds.
 
 
 How to add a new Theme:
