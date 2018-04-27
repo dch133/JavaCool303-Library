@@ -14,7 +14,7 @@ How to use import:
 ------------------ 
 - Create a class with a main method in the same workplace as JavaCool303 folder
 - import JavaCool303.*
-- Create a Cool303Frame and run frame.display() (as shown in Cool303Main)
+- Create a Cool303Frame and run frame.display() (as shown in Cool303Main.java)
 
 HandCoded: 
 ----------
